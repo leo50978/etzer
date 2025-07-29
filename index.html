@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eben Ezer Electronics - Votre partenaire en électronique et formation digitale</title>
+    <meta name="description" content="Produits électroniques de qualité et formations pour créer votre carte virtuelle. Livraison internationale et assistance personnalisée.">
+    
+    <!-- Tailwind CSS via CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563eb',
+                        secondary: '#1e40af',
+                        accent: '#f59e0b',
+                        dark: '#1f2937',
+                        light: '#f3f4f6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 1s ease-in',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        },
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Merriweather:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Anime.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    
+    <style>
+        /* Custom CSS */
+        .clip-hero {
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        @media (max-width: 768px) {
+            .clip-hero {
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+        }
+        
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+        
+        /* Smooth scroll for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="font-sans text-dark bg-light antialiased">
+    <!-- Header Sticky -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold text-primary">
+                        <span class="text-secondary">Eben</span>Ezer
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#" class="font-medium hover:text-primary transition">Accueil</a>
+                    <a href="#about" class="font-medium hover:text-primary transition">À propos</a>
+                    <a href="#services" class="font-medium hover:text-primary transition">Services</a>
+                    <a href="#shop" class="font-medium hover:text-primary transition">Boutique</a>
+                    <a href="#faq" class="font-medium hover:text-primary transition">FAQ</a>
+                    <a href="#contact" class="font-medium hover:text-primary transition">Contact</a>
+                </nav>
+                
+                <!-- Action Icons -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition" aria-label="Recherche">
+                        <i class="fas fa-search text-gray-600"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition" aria-label="Panier">
+                        <i class="fas fa-shopping-cart text-gray-600"></i>
+                        <span class="cart-count absolute -mt-2 -mr-2 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition" aria-label="Langue">
+                        <i class="fas fa-globe text-gray-600"></i>
+                    </button>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:text-primary focus:outline-none">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="#" class="block py-2 font-medium hover:text-primary transition">Accueil</a>
+                    <a href="#about" class="block py-2 font-medium hover:text-primary transition">À propos</a>
+                    <a href="#services" class="block py-2 font-medium hover:text-primary transition">Services</a>
+                    <a href="#shop" class="block py-2 font-medium hover:text-primary transition">Boutique</a>
+                    <a href="#faq" class="block py-2 font-medium hover:text-primary transition">FAQ</a>
+                    <a href="#contact" class="block py-2 font-medium hover:text-primary transition">Contact</a>
+                </div>
+                <div class="mt-4 pt-4 border-t border-gray-200 flex justify-between">
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition" aria-label="Recherche">
+                        <i class="fas fa-search text-gray-600"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition relative" aria-label="Panier">
+                        <i class="fas fa-shopping-cart text-gray-600"></i>
+                        <span class="cart-count absolute top-0 right-0 bg-accent text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition" aria-label="Langue">
+                        <i class="fas fa-globe text-gray-600"></i>
+                    </button>
+                    <button class="p-2 rounded-full hover:bg-gray-100 transition" aria-label="Chat">
+                        <i class="fas fa-comment-dots text-gray-600"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-r from-primary to-secondary text-white clip-hero">
+        <div class="container mx-auto px-4 py-20 md:py-32">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 animate-fade-in">
+                    <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">Vos produits électroniques livrés partout dans le monde</h1>
+                    <p class="text-xl mb-8 opacity-90">+ des formations simples pour créer votre carte virtuelle.</p>
+                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                        <a href="#shop" class="bg-accent hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 shadow-lg text-center">
+                            Voir la boutique
+                        </a>
+                        <a href="#services" class="bg-white hover:bg-gray-100 text-primary font-bold py-3 px-6 rounded-lg transition transform hover:scale-105 shadow-lg text-center">
+                            Commencer une formation
+                        </a>
+                    </div>
+                </div>
+                <div class="md:w-1/2 flex justify-center animate-float">
+                    <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Produits électroniques" 
+                         class="rounded-lg shadow-2xl max-w-md w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Nos Services</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Service Card 1 -->
+                <div class="bg-light rounded-xl p-8 shadow-lg card-hover transition-all duration-300">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-microchip text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Vente de produits électroniques</h3>
+                    <p class="text-gray-600 mb-6">Découvrez notre sélection de produits électroniques de qualité, soigneusement sélectionnés pour répondre à vos besoins technologiques.</p>
+                    <a href="#shop" class="inline-block bg-primary hover:bg-secondary text-white font-medium py-2 px-6 rounded-lg transition">
+                        Voir les produits
+                    </a>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="bg-light rounded-xl p-8 shadow-lg card-hover transition-all duration-300">
+                    <div class="text-primary mb-4">
+                        <i class="fas fa-graduation-cap text-4xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold mb-4">Formation carte virtuelle</h3>
+                    <p class="text-gray-600 mb-6">Apprenez à créer et gérer votre carte virtuelle avec notre formation complète adaptée aux débutants comme aux professionnels.</p>
+                    <a href="#contact" class="inline-block bg-primary hover:bg-secondary text-white font-medium py-2 px-6 rounded-lg transition">
+                        Réserver ma place
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Pourquoi choisir Eben Ezer ?</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Feature 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Livraison internationale</h3>
+                    <p class="text-gray-600">Expédition rapide et sécurisée partout dans le monde.</p>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Paiement sécurisé</h3>
+                    <p class="text-gray-600">Transactions cryptées pour une sécurité maximale.</p>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-headset"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Assistance personnalisée</h3>
+                    <p class="text-gray-600">Support client disponible 7j/7 pour vous aider.</p>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="bg-white p-6 rounded-lg shadow-md text-center">
+                    <div class="text-primary text-3xl mb-4">
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-2">Innovation + foi</h3>
+                    <p class="text-gray-600">Help GOD - Notre engagement envers l'excellence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Ce que disent nos clients</h2>
+            
+            <div class="testimonial-slider relative">
+                <!-- Testimonial 1 -->
+                <div class="testimonial active opacity-100 transition-opacity duration-300">
+                    <div class="max-w-3xl mx-auto text-center">
+                        <p class="text-xl italic mb-6">"Les produits sont de très bonne qualité et la livraison a été extrêmement rapide. Je recommande vivement Eben Ezer pour tous vos besoins électroniques."</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client satisfait" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <h4 class="font-bold">Marie K.</h4>
+                                <p class="text-sm opacity-80">Client depuis 2023</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial hidden opacity-0 transition-opacity duration-300">
+                    <div class="max-w-3xl mx-auto text-center">
+                        <p class="text-xl italic mb-6">"La formation sur les cartes virtuelles est exceptionnelle. J'ai pu mettre en pratique immédiatement ce que j'ai appris. Merci pour ce contenu de qualité!"</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Client satisfait" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <h4 class="font-bold">Jean P.</h4>
+                                <p class="text-sm opacity-80">Étudiant en formation</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial hidden opacity-0 transition-opacity duration-300">
+                    <div class="max-w-3xl mx-auto text-center">
+                        <p class="text-xl italic mb-6">"Service client réactif et professionnel. J'ai eu un problème avec ma commande et tout a été résolu en moins de 24 heures. Je reviendrai!"</p>
+                        <div class="flex items-center justify-center">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client satisfait" class="w-12 h-12 rounded-full mr-4 object-cover">
+                            <div>
+                                <h4 class="font-bold">Sophie L.</h4>
+                                <p class="text-sm opacity-80">Client régulier</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Slider Controls -->
+                <div class="flex justify-center mt-8 space-x-2">
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none active" aria-label="Afficher le témoignage 1"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" aria-label="Afficher le témoignage 2"></button>
+                    <button class="testimonial-dot w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" aria-label="Afficher le témoignage 3"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote of the Day Section -->
+    <section class="py-16 bg-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-4xl mx-auto">
+                <div class="text-primary text-4xl mb-4">
+                    <i class="fas fa-quote-left"></i>
+                </div>
+                <blockquote class="text-xl md:text-2xl font-serif italic mb-6">
+                    "La technologie n'est rien. Ce qui compte, c'est que vous ayez foi en l'humanité, qu'elle soit fondamentalement bonne et intelligente, et que si vous lui donnez les bons outils, elle fera des choses merveilleuses avec eux."
+                </blockquote>
+                <p class="font-bold text-gray-700">— Steve Jobs</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Shop Preview Section -->
+    <section id="shop" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Nos Produits</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                <!-- Product 1 -->
+                <div class="bg-light rounded-lg overflow-hidden shadow-md card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Smartphone haut de gamme" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-accent text-white text-xs font-bold px-2 py-1 rounded">
+                            Nouveau
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Smartphone Premium</h3>
+                        <p class="text-gray-600 text-sm mb-2">128GB, 6.5" AMOLED, Quad Camera</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary">$599.99</span>
+                            <button class="add-to-cart bg-primary hover:bg-secondary text-white text-sm font-medium py-1 px-3 rounded transition" data-id="1" data-name="Smartphone Premium" data-price="599.99">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="bg-light rounded-lg overflow-hidden shadow-md card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1632&q=80" 
+                             alt="Ordinateur portable" 
+                             class="w-full h-48 object-cover">
+                        <div class="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">
+                            Promo
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Laptop Pro</h3>
+                        <p class="text-gray-600 text-sm mb-2">16GB RAM, 512GB SSD, i7 11th Gen</p>
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <span class="font-bold text-primary">$899.99</span>
+                                <span class="text-gray-400 text-sm line-through ml-2">$1099.99</span>
+                            </div>
+                            <button class="add-to-cart bg-primary hover:bg-secondary text-white text-sm font-medium py-1 px-3 rounded transition" data-id="2" data-name="Laptop Pro" data-price="899.99">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="bg-light rounded-lg overflow-hidden shadow-md card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1589&q=80" 
+                             alt="Casque audio sans fil" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Casque Sans Fil</h3>
+                        <p class="text-gray-600 text-sm mb-2">Réduction de bruit, 30h autonomie</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary">$149.99</span>
+                            <button class="add-to-cart bg-primary hover:bg-secondary text-white text-sm font-medium py-1 px-3 rounded transition" data-id="3" data-name="Casque Sans Fil" data-price="149.99">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="bg-light rounded-lg overflow-hidden shadow-md card-hover">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" 
+                             alt="Montre connectée" 
+                             class="w-full h-48 object-cover">
+                    </div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-lg mb-1">Montre Connectée</h3>
+                        <p class="text-gray-600 text-sm mb-2">Suivi santé, notifications, étanche</p>
+                        <div class="flex justify-between items-center">
+                            <span class="font-bold text-primary">$199.99</span>
+                            <button class="add-to-cart bg-primary hover:bg-secondary text-white text-sm font-medium py-1 px-3 rounded transition" data-id="4" data-name="Montre Connectée" data-price="199.99">
+                                <i class="fas fa-cart-plus mr-1"></i> Ajouter
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-10">
+                <a href="#" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105">
+                    Voir tous les produits
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-10 md:mb-0 md:pr-10">
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                         alt="Équipe Eben Ezer" 
+                         class="rounded-lg shadow-xl w-full h-auto object-cover">
+                </div>
+                <div class="md:w-1/2">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6">Notre Histoire</h2>
+                    <p class="text-gray-600 mb-6">Fondée en 2024, Eben Ezer Electronics est née de la passion pour la technologie et du désir de rendre les solutions digitales accessibles à tous.</p>
+                    <p class="text-gray-600 mb-6">Notre mission est de fournir des produits électroniques de qualité et des formations pratiques pour aider nos clients à naviguer dans le monde numérique avec confiance.</p>
+                    
+                    <h3 class="text-xl font-bold mb-4 mt-8">Nos Valeurs</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-700"><strong>Innovation</strong> - Nous adoptons les dernières technologies pour vous offrir le meilleur.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-700"><strong>Intégrité</strong> - Des relations transparentes avec nos clients et partenaires.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-700"><strong>Foi</strong> - Help GOD - Nous croyons en l'utilisation positive de la technologie.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                            <span class="text-gray-700"><strong>Service</strong> - Un support client exceptionnel est notre priorité.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Notre Parcours</h2>
+            
+            <div class="relative">
+                <!-- Timeline line -->
+                <div class="hidden md:block absolute left-1/2 top-0 bottom-0 w-1 bg-primary transform -translate-x-1/2"></div>
+                
+                <!-- Timeline items -->
+                <div class="space-y-8 md:space-y-16">
+                    <!-- Item 1 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold">Fondation d'Eben Ezer</h3>
+                            <p class="text-gray-600">Janvier 2024</p>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 rounded-full bg-primary absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="md:w-1/2 md:pl-10">
+                            <p class="text-gray-700">Lancement de notre boutique en ligne spécialisée dans les produits électroniques.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0 order-2 md:order-1">
+                            <p class="text-gray-700">Introduction de notre première formation sur les cartes virtuelles avec plus de 100 participants.</p>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 rounded-full bg-primary absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="md:w-1/2 md:pl-10 order-1 md:order-2">
+                            <h3 class="text-xl font-bold">Première Formation</h3>
+                            <p class="text-gray-600">Mai 2024</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0">
+                            <h3 class="text-xl font-bold">Expansion Internationale</h3>
+                            <p class="text-gray-600">Septembre 2024</p>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 rounded-full bg-primary absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="md:w-1/2 md:pl-10">
+                            <p class="text-gray-700">Ouverture de notre service de livraison internationale dans plus de 20 pays.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 4 -->
+                    <div class="relative flex flex-col md:flex-row items-center">
+                        <div class="md:w-1/2 md:pr-10 md:text-right mb-4 md:mb-0 order-2 md:order-1">
+                            <p class="text-gray-700">Lancement de notre programme d'assistance client 24/7 et de notre chat en direct.</p>
+                        </div>
+                        <div class="hidden md:block w-8 h-8 rounded-full bg-primary absolute left-1/2 transform -translate-x-1/2"></div>
+                        <div class="md:w-1/2 md:pl-10 order-1 md:order-2">
+                            <h3 class="text-xl font-bold">Support Étendu</h3>
+                            <p class="text-gray-600">Novembre 2024</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Questions Fréquentes</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <!-- FAQ Item 1 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg focus:outline-none">
+                        <span>Quels sont les modes de paiement acceptés ?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer accordion-content mt-2 text-gray-600">
+                        <p>Nous acceptons les cartes de crédit Visa, Mastercard, American Express, ainsi que les paiements via PayPal et les virements bancaires pour certaines commandes. Toutes les transactions sont sécurisées par un cryptage SSL.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg focus:outline-none">
+                        <span>Quels sont les délais de livraison ?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer accordion-content mt-2 text-gray-600">
+                        <p>Les délais de livraison varient selon votre localisation :</p>
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>France : 2-3 jours ouvrables</li>
+                            <li>Europe : 3-5 jours ouvrables</li>
+                            <li>International : 7-14 jours ouvrables</li>
+                        </ul>
+                        <p class="mt-2">Nous vous enverrons un email de confirmation avec un numéro de suivi une fois votre commande expédiée.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg focus:outline-none">
+                        <span>Comment fonctionne la formation carte virtuelle ?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer accordion-content mt-2 text-gray-600">
+                        <p>Notre formation carte virtuelle est accessible en ligne et comprend :</p>
+                        <ul class="list-disc pl-5 mt-2">
+                            <li>Des vidéos tutoriels étape par étape</li>
+                            <li>Des PDF téléchargeables avec les instructions</li>
+                            <li>Un accès à un groupe privé pour poser vos questions</li>
+                            <li>Des sessions en direct mensuelles pour des questions spécifiques</li>
+                        </ul>
+                        <p class="mt-2">Une fois inscrit, vous avez un accès à vie au contenu et à ses mises à jour.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg focus:outline-none">
+                        <span>Quelle est votre politique de retour ?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer accordion-content mt-2 text-gray-600">
+                        <p>Nous acceptons les retours dans les 14 jours suivant la réception de votre commande, à condition que les produits soient dans leur état d'origine, non utilisés et dans leur emballage d'origine.</p>
+                        <p class="mt-2">Pour initier un retour, veuillez contacter notre service client via le formulaire de contact ou le chat en direct. Les frais de retour sont à la charge du client, sauf en cas de produit défectueux ou d'erreur de notre part.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="mb-4 border-b border-gray-200 pb-4">
+                    <button class="faq-question flex justify-between items-center w-full text-left font-bold text-lg focus:outline-none">
+                        <span>Proposez-vous une garantie sur vos produits ?</span>
+                        <i class="fas fa-chevron-down transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-answer accordion-content mt-2 text-gray-600">
+                        <p>Tous nos produits électroniques sont couverts par une garantie constructeur d'au moins 1 an. Certains produits bénéficient d'une garantie prolongée de 2 ans.</p>
+                        <p class="mt-2">En cas de problème, notre équipe vous assistera dans le processus de réclamation de garantie. Nous servons d'intermédiaire entre vous et le fabricant pour faciliter les réparations ou remplacements.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <p class="text-lg mb-4">Vous avez une autre question ?</p>
+                <a href="#contact" class="inline-block bg-primary hover:bg-secondary text-white font-bold py-3 px-8 rounded-lg transition transform hover:scale-105">
+                    Contactez-nous
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="py-16 bg-primary text-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-3xl md:text-4xl font-bold mb-4">Recevez nos offres et astuces digitales</h2>
+                <p class="text-xl mb-8 opacity-90 max-w-2xl mx-auto">Abonnez-vous à notre newsletter pour ne rien manquer de nos promotions, nouveaux produits et conseils technologiques.</p>
+                
+                <form id="newsletter-form" class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Votre email" required class="flex-grow px-4 py-3 rounded-lg text-dark focus:outline-none focus:ring-2 focus:ring-accent">
+                    <button type="submit" class="bg-accent hover:bg-yellow-600 text-white font-bold py-3 px-6 rounded-lg transition whitespace-nowrap">
+                        Je m'inscris
+                    </button>
+                </form>
+                
+                <p class="text-sm mt-4 opacity-70">Nous respectons votre vie privée. Désabonnez-vous à tout moment.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12">Contactez-nous</h2>
+            
+            <div class="flex flex-col lg:flex-row gap-12">
+                <div class="lg:w-1/2">
+                    <form id="contact-form" class="space-y-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Nom complet</label>
+                            <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                            <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block text-gray-700 font-medium mb-2">Sujet</label>
+                            <select id="subject" name="subject" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                                <option value="question">Question générale</option>
+                                <option value="order">Commande</option>
+                                <option value="support">Support technique</option>
+                                <option value="training">Formation</option>
+                                <option value="other">Autre</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                            <textarea id="message" name="message" rows="5" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-secondary text-white font-bold py-3 px-6 rounded-lg transition">
+                            Envoyer le message
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="lg:w-1/2">
+                    <div class="bg-gray-50 p-8 rounded-xl h-full">
+                        <h3 class="text-2xl font-bold mb-6">Autres moyens de contact</h3>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Email</h4>
+                                    <a href="mailto:contact@eben-ezer.com" class="text-gray-600 hover:text-primary transition">contact@eben-ezer.com</a>
+                                    <p class="text-sm text-gray-500 mt-1">Réponse sous 24h</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">WhatsApp</h4>
+                                    <a href="https://wa.me/1234567890" class="text-gray-600 hover:text-primary transition">xxxxxxxx</a>
+                                    <p class="text-sm text-gray-500 mt-1">Assistance instantanée</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Téléphone</h4>
+                                    <a href="tel:+1234567890" class="text-gray-600 hover:text-primary transition">xxxxxxxx</a>
+                                    <p class="text-sm text-gray-500 mt-1">Lun-Ven, 9h-18h</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start">
+                                <div class="text-primary text-xl mr-4 mt-1">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div>
+                                    <h4 class="font-bold mb-1">Adresse</h4>
+                                    <p class="text-gray-600">xxxxxx<br>xxxxxxxxxxx</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-bold mb-4">Suivez-nous</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="text-gray-600 hover:text-primary transition text-xl" aria-label="Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="#" class="text-gray-600 hover:text-primary transition text-xl" aria-label="Instagram">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                                <a href="#" class="text-gray-600 hover:text-primary transition text-xl" aria-label="Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="#" class="text-gray-600 hover:text-primary transition text-xl" aria-label="LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chat Button (Sticky) -->
+    <button id="chat-button" class="fixed bottom-6 right-6 bg-primary hover:bg-secondary text-white w-14 h-14 rounded-full shadow-lg flex items-center justify-center transition transform hover:scale-110 z-40" aria-label="Ouvrir le chat">
+        <i class="fas fa-comment-dots text-2xl"></i>
+    </button>
+
+    <!-- Mini Cart (Sticky) -->
+    <div id="mini-cart" class="fixed top-1/2 right-0 transform -translate-y-1/2 bg-white shadow-xl rounded-l-lg p-4 z-30 hidden transition-all duration-300 translate-x-full">
+        <div class="flex justify-between items-center mb-4">
+            <h3 class="font-bold">Votre Panier</h3>
+            <button id="close-cart" class="text-gray-500 hover:text-dark">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items space-y-3 max-h-60 overflow-y-auto">
+            <!-- Cart items will be added here dynamically -->
+            <p class="text-gray-500 text-center py-4">Votre panier est vide</p>
+        </div>
+        <div class="mt-4 pt-4 border-t border-gray-200">
+            <div class="flex justify-between font-bold mb-4">
+                <span>Total:</span>
+                <span class="cart-total">$0.00</span>
+            </div>
+            <a href="#" class="block w-full bg-primary hover:bg-secondary text-white text-center font-medium py-2 px-4 rounded-lg transition">
+                Commander
+            </a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Eben Ezer</h3>
+                    <p class="text-gray-400 mb-4">Votre partenaire en solutions électroniques et formations digitales.</p>
+                    <p class="text-gray-400">Help GOD - Innovation et foi au service de la technologie.</p>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Navigation</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Accueil</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition">À propos</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-white transition">Services</a></li>
+                        <li><a href="#shop" class="text-gray-400 hover:text-white transition">Boutique</a></li>
+                        <li><a href="#faq" class="text-gray-400 hover:text-white transition">FAQ</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Produits électroniques</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Formation carte virtuelle</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Support technique</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Livraison internationale</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Informations</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Mentions légales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Conditions générales</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Politique de confidentialité</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition">Politique de retour</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-10 pt-6 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400 mb-4 md:mb-0">© 2025 Eben Ezer Electronics. Tous droits réservés.</p>
+                <div class="flex space-x-6">
+                    <a href="#" class="text-gray-400 hover:text-white transition" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white transition" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // FAQ Accordion
+        const faqQuestions = document.querySelectorAll('.faq-question');
+        
+        faqQuestions.forEach(question => {
+            question.addEventListener('click', () => {
+                const answer = question.nextElementSibling;
+                const icon = question.querySelector('i');
+                
+                // Toggle the answer
+                if (answer.style.maxHeight) {
+                    answer.style.maxHeight = null;
+                    icon.style.transform = 'rotate(0deg)';
+                } else {
+                    answer.style.maxHeight = answer.scrollHeight + 'px';
+                    icon.style.transform = 'rotate(180deg)';
+                }
+            });
+        });
+        
+        // Testimonial Slider
+        let currentTestimonial = 0;
+        const testimonials = document.querySelectorAll('.testimonial');
+        const dots = document.querySelectorAll('.testimonial-dot');
+        
+        function showTestimonial(index) {
+            testimonials.forEach((testimonial, i) => {
+                if (i === index) {
+                    testimonial.classList.remove('hidden');
+                    testimonial.classList.add('active');
+                    dots[i].classList.add('opacity-100');
+                    dots[i].classList.remove('opacity-50');
+                    
+                    // Anime.js animation
+                    anime({
+                        targets: testimonial,
+                        opacity: [0, 1],
+                        duration: 500,
+                        easing: 'easeInOutQuad'
+                    });
+                } else {
+                    testimonial.classList.add('hidden');
+                    testimonial.classList.remove('active');
+                    dots[i].classList.remove('opacity-100');
+                    dots[i].classList.add('opacity-50');
+                }
+            });
+        }
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = index;
+                showTestimonial(currentTestimonial);
+            });
+        });
+        
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(currentTestimonial);
+        }, 5000);
+        
+        // Cart functionality
+        const cart = [];
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        const cartCount = document.querySelectorAll('.cart-count');
+        const miniCart = document.getElementById('mini-cart');
+        const cartButton = document.getElementById('chat-button'); // Reusing chat button as cart button for demo
+        const closeCart = document.getElementById('close-cart');
+        const cartItemsContainer = document.querySelector('.cart-items');
+        const cartTotal = document.querySelector('.cart-total');
+        
+        function updateCart() {
+            // Update cart count
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartCount.forEach(el => el.textContent = totalItems);
+            
+            // Update mini cart items
+            cartItemsContainer.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItemsContainer.innerHTML = '<p class="text-gray-500 text-center py-4">Votre panier est vide</p>';
+                cartTotal.textContent = '$0.00';
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemElement = document.createElement('div');
+                itemElement.className = 'flex justify-between items-center';
+                itemElement.innerHTML = `
+                    <div class="flex items-center">
+                        <img src="https://via.placeholder.com/40" alt="${item.name}" class="w-10 h-10 rounded mr-3">
+                        <div>
+                            <h4 class="font-medium text-sm">${item.name}</h4>
+                            <p class="text-gray-500 text-xs">$${item.price} x ${item.quantity}</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="remove-item text-red-500 hover:text-red-700 text-xs" data-id="${item.id}">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(itemElement);
+                total += item.price * item.quantity;
+            });
+            
+            cartTotal.textContent = `$${total.toFixed(2)}`;
+        }
+        
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const id = button.getAttribute('data-id');
+                const name = button.getAttribute('data-name');
+                const price = parseFloat(button.getAttribute('data-price'));
+                
+                // Check if item already in cart
+                const existingItem = cart.find(item => item.id === id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push({
+                        id,
+                        name,
+                        price,
+                        quantity: 1
+                    });
+                }
+                
+                updateCart();
+                
+                // Show mini cart
+                miniCart.classList.remove('hidden');
+                miniCart.classList.remove('translate-x-full');
+                
+                // Animation
+                anime({
+                    targets: button,
+                    scale: [1, 1.2, 1],
+                    duration: 500,
+                    easing: 'easeInOutQuad'
+                });
+                
+                // Show success message
+                const notification = document.createElement('div');
+                notification.className = 'fixed bottom-20 right-6 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50';
+                notification.textContent = `${name} ajouté au panier`;
+                document.body.appendChild(notification);
+                
+                setTimeout(() => {
+                    notification.remove();
+                }, 2000);
+            });
+        });
+        
+        // Toggle mini cart
+        cartButton.addEventListener('click', () => {
+            miniCart.classList.toggle('hidden');
+            miniCart.classList.toggle('translate-x-full');
+        });
+        
+        closeCart.addEventListener('click', () => {
+            miniCart.classList.add('hidden');
+            miniCart.classList.add('translate-x-full');
+        });
+        
+        // Remove item from cart
+        document.addEventListener('click', (e) => {
+            if (e.target.closest('.remove-item')) {
+                const id = e.target.closest('.remove-item').getAttribute('data-id');
+                const itemIndex = cart.findIndex(item => item.id === id);
+                
+                if (itemIndex !== -1) {
+                    cart.splice(itemIndex, 1);
+                    updateCart();
+                }
+            }
+        });
+        
+        // Form submissions
+        document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = e.target.querySelector('input[type="email"]').value;
+            
+            // Here you would typically send the data to your server
+            console.log('Newsletter subscription:', email);
+            
+            // Show success message
+            alert('Merci pour votre inscription à notre newsletter !');
+            e.target.reset();
+        });
+        
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const data = Object.fromEntries(formData.entries());
+            
+            // Here you would typically send the data to your server
+            console.log('Contact form submitted:', data);
+            
+            // Show success message
+            alert('Merci pour votre message ! Nous vous répondrons dès que possible.');
+            e.target.reset();
+        });
+        
+        // Scroll animations
+        window.addEventListener('scroll', () => {
+            const scrollPosition = window.scrollY;
+            const header = document.querySelector('header');
+            
+            if (scrollPosition > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+        
+        // Initialize animations on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Hero text animation
+            anime({
+                targets: '.animate-fade-in',
+                opacity: [0, 1],
+                translateY: [20, 0],
+                duration: 800,
+                easing: 'easeOutQuad',
+                delay: 200
+            });
+            
+            // Float animation for hero image
+            anime({
+                targets: '.animate-float',
+                translateY: [0, -15],
+                direction: 'alternate',
+                loop: true,
+                easing: 'easeInOutSine',
+                duration: 3000
+            });
+            
+            // Service cards animation
+            anime({
+                targets: '.card-hover',
+                opacity: [0, 1],
+                translateY: [30, 0],
+                duration: 1000,
+                easing: 'easeOutQuad',
+                delay: anime.stagger(100)
+            });
+            
+            // Show first testimonial
+            showTestimonial(0);
+        });
+    </script>
+</body>
+</html>
